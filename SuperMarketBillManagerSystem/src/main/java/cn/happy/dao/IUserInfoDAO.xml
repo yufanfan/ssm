@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <!DOCTYPE mapper
+            PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+            "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    <mapper namespace="cn.happy.dao.IUserInfoDAO">
+     <!--登录-->
+    <select id="login" resultType="UserInfo">
+         select * from smbms_user where usercode=#{userCode} and userpassword=#{userPassword}
+    </select>
+    <!--获取总记录数-->
+    <select id="getTotalCount" resultType="int">
+        select count(1) from smbms_user
+    </select>
+    <!--查询单页数据-->
+    <select id="findOnePageData" resultType="UserInfo">
+        select * from smbms_user  where username like '%' #{userName}  '%' limit #{pageindex},#{pagesize}
+    </select>
+    <!--带条件查询的总记录数-->
+    <select id="getTotalRecordsByCondition" resultType="int">
+        select count(1) from smbms_user where username like '%' #{userName}  '%'
+    </select>
+    <!--添加用户-->
+    <insert id="addUserInfo">
+        INSERT INTO smbms_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userCode!=null">userCode,</if>
+            <if test="userName!=null">userName,</if>
+            <if test="userPassword!=null">userPassword,</if>
+            <if test="gender!=null">gender,</if>
+            <if test="birthday!=null">birthday,</if>
+            <if test="phone!=null">phone,</if>
+            <if test="address!=null">address,</if>
+            <if test="userType!=null">userType,</if>
+
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userCode!=null">#{userCode},</if>
+            <if test="userName!=null">#{userName},</if>
+            <if test="userPassword!=null">#{userPassword},</if>
+            <if test="gender!=null">#{gender},</if>
+            <if test="birthday!=null">#{birthday},</if>
+            <if test="phone!=null">#{phone},</if>
+            <if test="address!=null">#{address},</if>
+            <if test="userType!=null">#{userType},</if>
+
+        </trim>
+    </insert>
+
+    <!--删除用户-->
+    <delete id="deleteUserInfo">
+        DELETE FROM smbms_user WHERE id =#{0}
+    </delete>
+    <!--按id查询用户信息-->
+    <select id="getInfo" resultType="UserInfo">
+    select * from smbms_user where id=#{id}
+    </select>
+   <!--修改用户-->
+    <update id="userUpdate">
+        UPDATE smbms_user SET userName = #{userName} ,gender = #{gender} ,birthday = #{birthday} ,phone = #{phone} ,address = #{address},userType = #{userType} ,modifyBy = #{modifyBy} ,modifyDate = #{modifyDate} WHERE id = #{id}
+    </update>
+
+
+
+
+</mapper>
