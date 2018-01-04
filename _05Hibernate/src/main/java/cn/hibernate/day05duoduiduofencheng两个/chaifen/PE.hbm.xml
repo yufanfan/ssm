@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cn.hibernate.day05duoduiduofencheng两个.chaifen">
+
+    <class name="PE" table="PE">
+        <id name="id" column="ID">
+            <generator class="sequence">
+                <param name="sequence">SEQ_ID</param>
+            </generator>
+        </id>
+        <many-to-one name="eid" class="Employee">
+            <column name="eid"></column>
+        </many-to-one>
+        <many-to-one name="pid" class="Project">
+            <column name="pid"></column>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

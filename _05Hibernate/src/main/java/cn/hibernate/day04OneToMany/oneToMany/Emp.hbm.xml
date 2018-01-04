@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cn.hibernate.day04OneToMany.oneToMany">
+    <!--实体 name=实体端的内容   column=DB端的内容-->
+    <class name="Emp" table="EMP">
+        <!--和底层数据表对应的主键   业务意义-->
+        <id name="empno" column="EMPNO">
+           <generator class="native"></generator>
+        </id>
+        <property name="ename" column="ENAME" length="32"></property>
+<!--多对一-->
+        <many-to-one name="dept" column="DEPTNO" class="Dept" lazy="proxy"></many-to-one>
+    </class>
+
+
+</hibernate-mapping>

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="cn.hibernate.day01.entity.entity">
+    <!--实体 name=实体端的内容   column=DB端的内容-->
+    <class name="Student" table="STUDENT" dynamic-update="true">
+        <!--和底层数据表对应的主键   业务意义-->
+        <id name="stuid" column="STUID">
+            <!--主键生成策略 ：assigned:程序员手动给值-->
+            <!--<generator class="assigned"/>-->
+            <generator class="native"></generator>
+        </id>
+        <property name="stuname" column="STUNAME"></property>
+        <property name="stuage" column="STUAGE"></property>
+    </class>
+
+</hibernate-mapping>

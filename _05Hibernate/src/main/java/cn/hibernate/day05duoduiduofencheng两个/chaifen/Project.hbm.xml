@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cn.hibernate.day05duoduiduofencheng两个.chaifen">
+    <!--实体 name=实体端的内容   column=DB端的内容-->
+    <class name="Project" table="PROJECT">
+        <!--和底层数据表对应的主键   业务意义-->
+        <id name="pid" column="PID">
+            <generator class="sequence">
+                <param name="sequence">SEQ_ID</param>
+            </generator>
+        </id>
+        <property name="pname" column="PNAME" length="32"></property>
+  </class>
+</hibernate-mapping>

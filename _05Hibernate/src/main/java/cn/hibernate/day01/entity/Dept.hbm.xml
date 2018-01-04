@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cn.hibernate.day01.entity">
+    <!--实体 name=实体端的内容   column=DB端的内容-->
+    <class name="Dept" table="DEPT" dynamic-update="true">
+        <!--和底层数据表对应的主键   业务意义-->
+        <id name="deptno" column="DEPTNO">
+            <!--主键生成策略 ：assigned:程序员手动给值-->
+            <generator class="native"/><!--class="assigned"-->
+        </id>
+        <property name="dname" column="DNAME"></property>
+        <property name="loc" column="LOC" update="false"></property>
+    </class>
+
+</hibernate-mapping>

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="cn.hibernate.day01.entity.entity">
+    <!--实体 name=实体端的内容   column=DB端的内容-->
+    <class name="Users" table="USERS" dynamic-update="true">
+        <!--和底层数据表对应的主键   业务意义-->
+        <id name="id" column="id" length="4">
+            <!--主键生成策略 ：assigned:程序员手动给值-->
+            <!--<generator class="assigned"/>-->
+            <generator class="native"></generator>
+        </id>
+        <property name="name" column="name" length="50"></property>
+        <property name="password" column="password" length="50"></property>
+        <property name="telephone" column="telephone" length="15"></property>
+        <property name="username" column="username" length="50"></property>
+        <property name="isadmin" column="isadmin" length="5"></property>
+    </class>
+
+</hibernate-mapping>

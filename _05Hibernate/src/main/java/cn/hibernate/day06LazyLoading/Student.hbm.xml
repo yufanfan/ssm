@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cn.hibernate.day06LazyLoading">
+<!--lazy为true用load()查询不发送sql,为false用load()查询发sql-->
+    <class name="Student" table="STUDENT" lazy="true">
+        <id name="stuid" column="STUID">
+           <generator class="native"></generator>
+        </id>
+        <property name="stuname" column="STUNAME"/>
+        <property name="stuage" column="STUAGE"/>
+        <property name="studate" column="STUDATE"/>
+   </class>
+
+
+</hibernate-mapping>

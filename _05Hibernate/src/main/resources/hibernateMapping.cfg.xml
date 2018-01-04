@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+   <!--创建Session的基础配置-->
+    <session-factory>
+        <property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+        <property name="connection.url">jdbc:oracle:thin:@localhost:1521:orcl</property>
+        <property name="connection.username">scott</property>
+        <property name="connection.password">123</property>
+
+        <!-- JDBC 连接池(use the built-in) -->
+   <!--     <property name="connection.pool_size">1</property>-->
+
+        <!-- SQL dialect （方言）-->
+        <property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>
+
+        <!-- Enable Hibernate's automatic session context management
+          session工厂创建的session和当前线程绑定bind
+         -->
+       <!-- <property name="current_session_context_class">thread</property>-->
+
+        <!-- Disable the second-level cache  启用/关闭二级缓存-->
+       <!-- <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>-->
+
+        <!-- Echo   all executed SQL to stdout 在控制台打印sql -->
+        <property name="show_sql">true</property>
+        <!--格式化SQL-->
+        <property name="format_sql">true</property>
+        <!-- Drop and re-create （重新创建）the database schema（架构） on startup （启动）
+         是否根据hbm.xml自动建表 建表的策略 update create
+        -->
+        <!--保证只有一个链接-->
+        <property name="hibernate.current_session_context_class">thread</property>
+
+        <property name="hbm2ddl.auto">update</property>
+         <!--关联小配置 -->
+        <mapping resource="cn/hibernate/day03manyoroneMapping/manyOrOne/dept.hbm.xml"/>
+        <mapping resource="cn/hibernate/day03manyoroneMapping/manyOrOne/Emp.hbm.xml"/>
+    </session-factory>
+
+</hibernate-configuration
+>

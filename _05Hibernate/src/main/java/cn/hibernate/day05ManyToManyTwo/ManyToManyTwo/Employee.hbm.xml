@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cn.hibernate.day05ManyToManyTwo.ManyToManyTwo">
+    <!--实体 name=实体端的内容   column=DB端的内容-->
+    <class name="Employee" table="EMPLOYEE">
+        <!--和底层数据表对应的主键   业务意义-->
+        <id name="empid" column="EMPID">
+           <generator class="native"></generator>
+        </id>
+        <property name="empname" column="EMPNAME" length="32"></property>
+<!--多对多  table指的是中间表-->
+   <set name="project" table="PE" inverse="true">
+       <key column="EID"></key>
+       <many-to-many column="PID" class="Project"></many-to-many>
+   </set>
+    </class>
+</hibernate-mapping>
